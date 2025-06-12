@@ -4,1113 +4,923 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anamnese Capilar Luxuosa</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #B8860B;
-            --primary-dark: #8B6914;
-            --secondary: #2C1810;
-            --accent: #D4AF37;
-            --light: #FAF8F5;
-            --cream: #F5F2E8;
-            --dark: #1A1A1A;
-            --success: #4CAF50;
-            --gradient-primary: linear-gradient(135deg, #D4AF37 0%, #B8860B 50%, #8B6914 100%);
-            --gradient-bg: linear-gradient(135deg, #FAF8F5 0%, #F5F2E8 50%, #EDE7D3 100%);
-            --shadow-luxury: 0 20px 60px rgba(184, 134, 11, 0.15);
-            --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.08);
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--gradient-bg);
-            color: var(--dark);
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f5f1eb 0%, #e8ddd4 100%);
             min-height: 100vh;
+            color: #2c2c2c;
             line-height: 1.6;
-            overflow-x: hidden;
         }
-        
+
         .language-selector {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
-            display: flex;
-            gap: 10px;
         }
-        
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid var(--accent);
-            color: var(--secondary);
-            padding: 8px 16px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-            backdrop-filter: blur(10px);
-        }
-        
-        .lang-btn.active {
-            background: var(--gradient-primary);
+
+        .language-selector button {
+            background: #b8860b;
             color: white;
-            border-color: var(--primary);
+            border: none;
+            padding: 8px 16px;
+            margin: 0 4px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
         }
-        
-        .lang-btn:hover {
+
+        .language-selector button:hover {
+            background: #9a7209;
             transform: translateY(-2px);
-            box-shadow: var(--shadow-card);
         }
-        
+
+        .language-selector button.active {
+            background: #8b4513;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+        }
+
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
-        
-        header {
+
+        .header {
             text-align: center;
-            padding: 60px 0 40px;
-            position: relative;
+            margin-bottom: 50px;
         }
-        
-        .header-decoration {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 4px;
-            background: var(--gradient-primary);
-            border-radius: 2px;
-        }
-        
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+
+        .header h1 {
+            font-size: 3.5rem;
+            color: #b8860b;
             margin-bottom: 20px;
-            letter-spacing: -0.02em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-weight: 300;
+            letter-spacing: 2px;
         }
-        
-        .subtitle {
+
+        .header p {
             font-size: 1.2rem;
-            color: var(--secondary);
+            color: #666;
+            margin-bottom: 30px;
             max-width: 600px;
-            margin: 0 auto 30px;
-            font-weight: 400;
-            opacity: 0.8;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        .luxury-badge {
+
+        .premium-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--accent);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            color: var(--primary-dark);
-            font-weight: 500;
-        }
-        
-        .app-container {
-            background: rgba(255, 255, 255, 0.95);
+            background: linear-gradient(45deg, #b8860b, #daa520);
+            color: white;
+            padding: 12px 24px;
             border-radius: 30px;
-            overflow: hidden;
-            box-shadow: var(--shadow-luxury);
-            margin-bottom: 40px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        
-        .progress-container {
-            background: var(--cream);
-            height: 6px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: var(--gradient-primary);
-            width: 0%;
-            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-        
-        .progress-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 20px;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4));
-            animation: shimmer 2s infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { transform: translateX(-20px); }
-            100% { transform: translateX(20px); }
-        }
-        
-        .progress-text {
-            text-align: center;
-            padding: 20px;
+            font-size: 1rem;
             font-weight: 500;
-            color: var(--secondary);
-            font-size: 0.95rem;
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.3);
+            transition: transform 0.3s ease;
         }
-        
-        .question-section {
+
+        .premium-badge:hover {
+            transform: translateY(-3px);
+        }
+
+        .premium-badge::before {
+            content: "👑";
+            margin-right: 8px;
+        }
+
+        .app-container {
+            background: white;
+            border-radius: 20px;
             padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border: 1px solid #e0d5c7;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: 3px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #b8860b, #daa520);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+            width: 12.5%;
+        }
+
+        .question-counter {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .section {
             display: none;
-            animation: fadeInUp 0.6s ease-out;
         }
-        
-        .question-section.active {
+
+        .section.active {
             display: block;
+            animation: fadeIn 0.5s ease;
         }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        .section-title {
+
+        .section-header {
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 35px;
-            color: var(--secondary);
-            font-family: 'Playfair Display', serif;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
         }
-        
+
         .section-icon {
             width: 60px;
             height: 60px;
-            background: var(--gradient-primary);
+            background: linear-gradient(45deg, #b8860b, #daa520);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-right: 20px;
+            font-size: 24px;
             color: white;
-            font-size: 1.5rem;
-            box-shadow: var(--shadow-card);
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.3);
         }
-        
-        .section-title h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
+
+        .section-title {
+            font-size: 2rem;
+            color: #2c2c2c;
+            font-weight: 300;
         }
-        
+
         .question {
             margin-bottom: 30px;
-            padding: 30px;
-            border-radius: 20px;
-            background: rgba(245, 242, 232, 0.5);
-            transition: var(--transition);
-            border: 1px solid rgba(212, 175, 55, 0.15);
         }
-        
-        .question-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--secondary);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
+
         .question-number {
-            background: var(--gradient-primary);
-            color: white;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.3);
+            width: 30px;
+            height: 30px;
+            background: #b8860b;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 14px;
         }
-        
+
+        .question-text {
+            font-size: 1.3rem;
+            color: #2c2c2c;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
         .options {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
+            margin-bottom: 30px;
         }
-        
+
         .option {
-            background: white;
+            position: relative;
+        }
+
+        .option input[type="radio"],
+        .option input[type="checkbox"] {
+            display: none;
+        }
+
+        .option label {
+            display: block;
             padding: 20px;
-            border-radius: 15px;
+            background: #fafafa;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
             cursor: pointer;
-            transition: var(--transition);
-            border: 2px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            text-align: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
-        
-        .option::before {
+
+        .option label::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.1), transparent);
             transition: left 0.5s ease;
         }
-        
-        .option:hover::before {
+
+        .option label:hover::before {
             left: 100%;
         }
-        
-        .option:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-card);
-            border-color: var(--accent);
+
+        .option label:hover {
+            border-color: #b8860b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.15);
         }
-        
-        .option.selected {
-            border-color: var(--primary);
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(184, 134, 11, 0.05) 100%);
-            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.2);
-            transform: translateY(-3px);
-        }
-        
-        .option input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-        
-        .option-text {
-            font-weight: 500;
-            color: var(--secondary);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .btn {
-            background: var(--gradient-primary);
+
+        .option input:checked + label {
+            background: linear-gradient(135deg, #b8860b, #daa520);
             color: white;
-            border: none;
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: var(--transition);
+            border-color: #b8860b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.3);
+        }
+
+        .navigation {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin: 30px auto 0;
-            box-shadow: var(--shadow-card);
-            font-weight: 600;
-            position: relative;
-            overflow: hidden;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
         }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
         }
-        
-        .btn:hover::before {
-            left: 100%;
+
+        .btn-primary {
+            background: linear-gradient(45deg, #b8860b, #daa520);
+            color: white;
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.3);
         }
-        
-        .btn:hover {
+
+        .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(184, 134, 11, 0.4);
         }
-        
-        .btn:active {
-            transform: translateY(1px);
+
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #666;
+            border: 2px solid #e0e0e0;
         }
-        
-        .results {
-            padding: 50px 40px;
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .btn::after {
+            content: "→";
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* Estilos para a seção de resultados */
+        #results {
             display: none;
-            text-align: center;
-            animation: fadeInUp 0.8s ease-out;
-        }
-        
-        .results-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .results-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        
-        .hair-type-result {
-            font-size: 2rem;
-            color: var(--secondary);
-            margin: 30px 0;
-            padding: 20px 30px;
-            display: inline-block;
-            border-radius: 50px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 2px solid var(--accent);
-            font-weight: 700;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .recommendation-card {
             background: white;
             border-radius: 20px;
-            padding: 35px;
-            margin: 30px 0;
-            box-shadow: var(--shadow-card);
-            text-align: left;
-            border-top: 5px solid var(--primary);
-            position: relative;
-            overflow: hidden;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border: 1px solid #e0d5c7;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-        
-        .recommendation-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
         }
-        
-        .recommendation-title {
+
+        .results-header h2 {
+            font-size: 2.5rem;
+            color: #b8860b;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .hair-type-result {
+            background: linear-gradient(135deg, #b8860b, #daa520);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.3);
+        }
+
+        .hair-type-result h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .hair-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .results-section {
+            margin-bottom: 40px;
+        }
+
+        .results-section h4 {
+            font-size: 1.5rem;
+            color: #2c2c2c;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-            color: var(--secondary);
-            font-size: 1.5rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
+            font-weight: 500;
         }
-        
-        .recommendation-icon {
-            color: var(--primary);
-            font-size: 1.8rem;
+
+        .results-section h4::before {
+            content: "✦";
+            color: #b8860b;
+            margin-right: 10px;
+            font-size: 1.2rem;
         }
-        
+
+        .routine-list,
         .product-list {
             list-style: none;
             padding: 0;
         }
-        
+
+        .routine-list li,
         .product-list li {
-            margin-bottom: 15px;
-            padding-left: 30px;
-            position: relative;
-            font-size: 1.05rem;
-            color: var(--secondary);
+            background: #fafafa;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border-left: 4px solid #b8860b;
+            transition: all 0.3s ease;
         }
-        
+
+        .routine-list li:hover,
+        .product-list li:hover {
+            background: #f0f0f0;
+            transform: translateX(5px);
+        }
+
+        .routine-list li::before {
+            content: "✦";
+            color: #b8860b;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
         .product-list li::before {
-            content: '✦';
-            color: var(--accent);
-            font-size: 1.2rem;
-            position: absolute;
-            left: 0;
-            top: 0;
+            content: "✦";
+            color: #b8860b;
+            margin-right: 10px;
+            font-weight: bold;
         }
-        
+
         .brand-showcase {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
         }
-        
+
         .brand-card {
-            background: white;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #f8f8f8, #e8e8e8);
             padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-card);
-            font-weight: 600;
-            color: var(--secondary);
-            transition: var(--transition);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            min-height: 80px;
-        }
-        
-        .brand-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-            border-color: var(--accent);
-        }
-        
-        .hair-visual {
-            width: 180px;
-            height: 180px;
-            margin: 30px auto;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-            box-shadow: var(--shadow-luxury);
-            position: relative;
-        }
-        
-        .hair-visual::before {
-            content: '';
-            position: absolute;
-            inset: -5px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            z-index: -1;
-            filter: blur(10px);
-            opacity: 0.3;
-        }
-        
-        footer {
+            border-radius: 12px;
             text-align: center;
-            padding: 40px 20px;
-            color: var(--secondary);
-            font-size: 0.9rem;
-            opacity: 0.7;
+            font-weight: 500;
+            color: #2c2c2c;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
         }
-        
+
+        .brand-card:hover {
+            border-color: #b8860b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.15);
+        }
+
+        .ingredients-section {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .ingredients-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .ingredient-tag {
+            background: #b8860b;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
             .container {
-                padding: 15px;
+                padding: 20px 15px;
             }
-            
-            h1 {
+
+            .header h1 {
                 font-size: 2.5rem;
             }
-            
+
+            .app-container,
+            #results {
+                padding: 25px;
+            }
+
             .options {
                 grid-template-columns: 1fr;
             }
-            
-            .question-section {
-                padding: 25px;
+
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
             }
-            
-            .results {
-                padding: 30px 25px;
-            }
-            
-            .language-selector {
-                top: 10px;
-                right: 10px;
-            }
-            
+
             .brand-showcase {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
             }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.6s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
     <div class="language-selector">
-        <button class="lang-btn active" onclick="setLanguage('pt')" data-lang="pt">Português</button>
-        <button class="lang-btn" onclick="setLanguage('en')" data-lang="en">English</button>
+        <button onclick="setLanguage('pt')" class="active" id="btn-pt">Português</button>
+        <button onclick="setLanguage('en')" id="btn-en">English</button>
     </div>
 
     <div class="container">
-        <header>
-            <div class="header-decoration"></div>
-            <h1 data-translate="title">Anamnese Capilar Luxuosa</h1>
-            <p class="subtitle" data-translate="subtitle">Descubra seu tipo de cabelo e receba recomendações personalizadas de produtos e tratamentos das melhores marcas</p>
-            <div class="luxury-badge">
-                <i class="fas fa-crown"></i>
-                <span data-translate="luxury-badge">Experiência Premium</span>
+        <div class="header">
+            <h1 data-pt="Anamnese Capilar Luxuosa" data-en="Luxury Hair Analysis">Anamnese Capilar Luxuosa</h1>
+            <p data-pt="Descubra seu tipo de cabelo e receba recomendações personalizadas de produtos e tratamentos das melhores marcas" data-en="Discover your hair type and receive personalized product and treatment recommendations from the best brands">
+                Descubra seu tipo de cabelo e receba recomendações personalizadas de produtos e tratamentos das melhores marcas
+            </p>
+            <div class="premium-badge">
+                <span data-pt="Experiência Premium" data-en="Premium Experience">Experiência Premium</span>
             </div>
-        </header>
-        
+        </div>
+
         <div class="app-container">
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar"></div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
             </div>
-            <div class="progress-text" id="progressText" data-translate="progress">Pergunta 1 de 8</div>
             
+            <div class="question-counter">
+                <span data-pt="Pergunta" data-en="Question">Pergunta</span> <span id="currentQuestion">1</span> <span data-pt="de" data-en="of">de</span> 8
+            </div>
+
             <!-- Seção 1: Curvatura -->
-            <div class="question-section active" id="section-1">
-                <div class="section-title">
-                    <div class="section-icon"><i class="fas fa-user-circle"></i></div>
-                    <h2 data-translate="section1-title">Identificação da Curvatura</h2>
+            <div class="section active" id="section1">
+                <div class="section-header">
+                    <div class="section-icon">👤</div>
+                    <h3 class="section-title" data-pt="Identificação da Curvatura" data-en="Curvature Identification">Identificação da Curvatura</h3>
                 </div>
-                
                 <div class="question">
-                    <div class="question-title">
+                    <div class="question-text">
                         <span class="question-number">1</span>
-                        <span data-translate="q1-title">Qual é a curvatura natural do seu cabelo?</span>
+                        <span data-pt="Qual é a curvatura natural do seu cabelo?" data-en="What is your hair's natural curvature?">Qual é a curvatura natural do seu cabelo?</span>
                     </div>
                     <div class="options">
-                        <label class="option">
-                            <input type="radio" name="curvature" value="1">
-                            <div class="option-text" data-translate="q1-opt1">Liso (Tipo 1)</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="curvature" value="2">
-                            <div class="option-text" data-translate="q1-opt2">Ondulado (Tipo 2)</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="curvature" value="3">
-                            <div class="option-text" data-translate="q1-opt3">Cacheado (Tipo 3)</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="curvature" value="4">
-                            <div class="option-text" data-translate="q1-opt4">Crespo (Tipo 4)</div>
-                        </label>
+                        <div class="option">
+                            <input type="radio" name="curvature" value="1" id="curvature1">
+                            <label for="curvature1" data-pt="Liso (Tipo 1)" data-en="Straight (Type 1)">Liso (Tipo 1)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="curvature" value="2" id="curvature2">
+                            <label for="curvature2" data-pt="Ondulado (Tipo 2)" data-en="Wavy (Type 2)">Ondulado (Tipo 2)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="curvature" value="3" id="curvature3">
+                            <label for="curvature3" data-pt="Cacheado (Tipo 3)" data-en="Curly (Type 3)">Cacheado (Tipo 3)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="curvature" value="4" id="curvature4">
+                            <label for="curvature4" data-pt="Crespo (Tipo 4)" data-en="Coily (Type 4)">Crespo (Tipo 4)</label>
+                        </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Seção 2: Espessura -->
-            <div class="question-section" id="section-2">
-                <div class="section-title">
-                    <div class="section-icon"><i class="fas fa-search"></i></div>
-                    <h2 data-translate="section2-title">Espessura dos Fios</h2>
+            <div class="section" id="section2">
+                <div class="section-header">
+                    <div class="section-icon">🔍</div>
+                    <h3 class="section-title" data-pt="Espessura dos Fios" data-en="Hair Thickness">Espessura dos Fios</h3>
                 </div>
-                
                 <div class="question">
-                    <div class="question-title">
+                    <div class="question-text">
                         <span class="question-number">2</span>
-                        <span data-translate="q2-title">Como você descreveria a espessura dos seus fios?</span>
+                        <span data-pt="Como você descreveria a espessura dos seus fios?" data-en="How would you describe your hair thickness?">Como você descreveria a espessura dos seus fios?</span>
                     </div>
                     <div class="options">
-                        <label class="option">
-                            <input type="radio" name="thickness" value="fine">
-                            <div class="option-text" data-translate="q2-opt1">Fino (difícil de sentir entre os dedos)</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="thickness" value="medium">
-                            <div class="option-text" data-translate="q2-opt2">Médio (facilmente sentido)</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="thickness" value="thick">
-                            <div class="option-text" data-translate="q2-opt3">Grosso (bem perceptível e robusto)</div>
-                        </label>
+                        <div class="option">
+                            <input type="radio" name="thickness" value="fine" id="thickness1">
+                            <label for="thickness1" data-pt="Fino (difícil de sentir entre os dedos)" data-en="Fine (hard to feel between fingers)">Fino (difícil de sentir entre os dedos)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="thickness" value="medium" id="thickness2">
+                            <label for="thickness2" data-pt="Médio (facilmente sentido)" data-en="Medium (easily felt)">Médio (facilmente sentido)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="thickness" value="thick" id="thickness3">
+                            <label for="thickness3" data-pt="Grosso (bem perceptível e robusto)" data-en="Thick (very noticeable and robust)">Grosso (bem perceptível e robusto)</label>
+                        </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Seção 3: Porosidade -->
-            <div class="question-section" id="section-3">
-                <div class="section-title">
-                    <div class="section-icon"><i class="fas fa-tint"></i></div>
-                    <h2 data-translate="section3-title">Porosidade Capilar</h2>
+            <div class="section" id="section3">
+                <div class="section-header">
+                    <div class="section-icon">💧</div>
+                    <h3 class="section-title" data-pt="Porosidade Capilar" data-en="Hair Porosity">Porosidade Capilar</h3>
                 </div>
-                
                 <div class="question">
-                    <div class="question-title">
+                    <div class="question-text">
                         <span class="question-number">3</span>
-                        <span data-translate="q3-title">Como seu cabelo absorve produtos e umidade?</span>
+                        <span data-pt="Como seu cabelo absorve e retém umidade?" data-en="How does your hair absorb and retain moisture?">Como seu cabelo absorve e retém umidade?</span>
                     </div>
                     <div class="options">
-                        <label class="option">
-                            <input type="radio" name="porosity" value="low">
-                            <div class="option-text" data-translate="q3-opt1">Baixa (demora para absorver, produtos ficam na superfície)</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="porosity" value="medium">
-                            <div class="option-text" data-translate="q3-opt2">Média (absorve bem e mantém hidratação)</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="porosity" value="high">
-                            <div class="option-text" data-translate="q3-opt3">Alta (absorve rapidamente, mas perde umidade facilmente)</div>
-                        </label>
+                        <div class="option">
+                            <input type="radio" name="porosity" value="low" id="porosity1">
+                            <label for="porosity1" data-pt="Baixa (demora para molhar e secar)" data-en="Low (takes time to wet and dry)">Baixa (demora para molhar e secar)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="porosity" value="medium" id="porosity2">
+                            <label for="porosity2" data-pt="Média (absorve bem e seca normalmente)" data-en="Medium (absorbs well and dries normally)">Média (absorve bem e seca normalmente)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="porosity" value="high" id="porosity3">
+                            <label for="porosity3" data-pt="Alta (absorve rapidamente mas perde umidade)" data-en="High (absorbs quickly but loses moisture)">Alta (absorve rapidamente mas perde umidade)</label>
+                        </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Seção 4: Oleosidade -->
-            <div class="question-section" id="section-4">
-                <div class="section-title">
-                    <div class="section-icon"><i class="fas fa-balance-scale"></i></div>
-                    <h2 data-translate="section4-title">Oleosidade do Couro Cabeludo</h2>
+            <div class="section" id="section4">
+                <div class="section-header">
+                    <div class="section-icon">🌿</div>
+                    <h3 class="section-title" data-pt="Oleosidade do Couro Cabeludo" data-en="Scalp Oiliness">Oleosidade do Couro Cabeludo</h3>
                 </div>
-                
                 <div class="question">
-                    <div class="question-title">
+                    <div class="question-text">
                         <span class="question-number">4</span>
-                        <span data-translate="q4-title">Com que frequência seu cabelo fica oleoso?</span>
+                        <span data-pt="Como é a oleosidade da sua raiz?" data-en="How is your scalp oiliness?">Como é a oleosidade da sua raiz?</span>
                     </div>
                     <div class="options">
-                        <label class="option">
-                            <input type="radio" name="oiliness" value="dry">
-                            <div class="option-text" data-translate="q4-opt1">Seco (raramente fica oleoso, couro cabeludo ressecado)</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="oiliness" value="normal">
-                            <div class="option-text" data-translate="q4-opt2">Normal (fica oleoso após 2-3 dias)</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="oiliness" value="oily">
-                            <div class="option-text" data-translate="q4-opt3">Oleoso (fica oleoso em menos de 24h)</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="oiliness" value="mixed">
-                            <div class="option-text" data-translate="q4-opt4">Misto (raiz oleosa, pontas secas)</div>
-                        </label>
+                        <div class="option">
+                            <input type="radio" name="oiliness" value="oily" id="oiliness1">
+                            <label for="oiliness1" data-pt="Oleosa (fica oleosa em 1 dia)" data-en="Oily (gets oily in 1 day)">Oleosa (fica oleosa em 1 dia)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="oiliness" value="normal" id="oiliness2">
+                            <label for="oiliness2" data-pt="Normal (fica oleosa em 2-3 dias)" data-en="Normal (gets oily in 2-3 days)">Normal (fica oleosa em 2-3 dias)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="oiliness" value="dry" id="oiliness3">
+                            <label for="oiliness3" data-pt="Seca (raramente fica oleosa)" data-en="Dry (rarely gets oily)">Seca (raramente fica oleosa)</label>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Seção 5: Processos Químicos -->
-            <div class="question-section" id="section-5">
-                <div class="section-title">
-                    <div class="section-icon"><i class="fas fa-flask"></i></div>
-                    <h2 data-translate="section5-title">Histórico de Processos Químicos</h2>
+
+            <!-- Seção 5: Histórico Químico -->
+            <div class="section" id="section5">
+                <div class="section-header">
+                    <div class="section-icon">⚗️</div>
+                    <h3 class="section-title" data-pt="Histórico de Processos Químicos" data-en="Chemical Process History">Histórico de Processos Químicos</h3>
                 </div>
-                
                 <div class="question">
-                    <div class="question-title">
+                    <div class="question-text">
                         <span class="question-number">5</span>
-                        <span data-translate="q5-title">Quais processos químicos seu cabelo já passou? (Múltipla escolha)</span>
+                        <span data-pt="Quais processos químicos seu cabelo já passou? (Múltipla escolha)" data-en="What chemical processes has your hair undergone? (Multiple choice)">Quais processos químicos seu cabelo já passou? (Múltipla escolha)</span>
                     </div>
                     <div class="options">
-                        <label class="option">
-                            <input type="checkbox" name="chemical" value="none">
-                            <div class="option-text" data-translate="q5-opt1">Nenhum (cabelo virgem)</div>
-                        </label>
-                        <label class="option">
-                            <input type="checkbox" name="chemical" value="coloring">
-                            <div class="option-text" data-translate="q5-opt2">Coloração/Tintura</div>
-                        </label>
-                        <label class="option">
-                            <input type="checkbox" name="chemical" value="bleaching">
-                            <div class="option-text" data-translate="q5-opt3">Descoloração</div>
-                        </label>
-                        <label class="option">
-                            <input type="checkbox" name="chemical" value="straightening">
-                            <div class="option-text" data-translate="q5-opt4">Alisamento/Relaxamento</div>
-                        </label>
-                        <label class="option">
-                            <input type="checkbox" name="chemical" value="perm">
-                            <div class="option-text" data-translate="q5-opt5">Permanente</div>
-                        </label>
+                        <div class="option">
+                            <input type="checkbox" name="chemical" value="none" id="chemical1">
+                            <label for="chemical1" data-pt="Nenhum (cabelo virgem)" data-en="None (virgin hair)">Nenhum (cabelo virgem)</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" name="chemical" value="coloring" id="chemical2">
+                            <label for="chemical2" data-pt="Coloração/Tintura" data-en="Coloring/Dyeing">Coloração/Tintura</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" name="chemical" value="bleaching" id="chemical3">
+                            <label for="chemical3" data-pt="Descoloração" data-en="Bleaching">Descoloração</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" name="chemical" value="straightening" id="chemical4">
+                            <label for="chemical4" data-pt="Alisamento/Relaxamento" data-en="Straightening/Relaxing">Alisamento/Relaxamento</label>
+                        </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Seção 6: Condição Atual -->
-            <div class="question-section" id="section-6">
-                <div class="section-title">
-                    <div class="section-icon"><i class="fas fa-heart"></i></div>
-                    <h2 data-translate="section6-title">Condição Atual dos Fios</h2>
+            <div class="section" id="section6">
+                <div class="section-header">
+                    <div class="section-icon">🎯</div>
+                    <h3 class="section-title" data-pt="Condição Atual dos Fios" data-en="Current Hair Condition">Condição Atual dos Fios</h3>
                 </div>
-                
                 <div class="question">
-                    <div class="question-title">
+                    <div class="question-text">
                         <span class="question-number">6</span>
-                        <span data-translate="q6-title">Como você descreveria a condição atual do seu cabelo?</span>
+                        <span data-pt="Como você descreveria a condição atual do seu cabelo?" data-en="How would you describe your hair's current condition?">Como você descreveria a condição atual do seu cabelo?</span>
                     </div>
                     <div class="options">
-                        <label class="option">
-                            <input type="radio" name="condition" value="healthy">
-                            <div class="option-text" data-translate="q6-opt1">Saudável (brilhoso, macio, sem quebra)</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="condition" value="dry">
-                            <div class="option-text" data-translate="q6-opt2">Ressecado (opaco, áspero ao toque)</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="condition" value="damaged">
-                            <div class="option-text" data-translate="q6-opt3">Danificado (quebra, pontas duplas, elástico)</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="condition" value="frizzy">
-                            <div class="option-text" data-translate="q6-opt4">Com frizz (arrepiado, difícil de controlar)</div>
-                        </label>
+                        <div class="option">
+                            <input type="radio" name="condition" value="healthy" id="condition1">
+                            <label for="condition1" data-pt="Saudável (brilhoso e forte)" data-en="Healthy (shiny and strong)">Saudável (brilhoso e forte)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="condition" value="dry" id="condition2">
+                            <label for="condition2" data-pt="Ressecado (opaco e áspero)" data-en="Dry (dull and rough)">Ressecado (opaco e áspero)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="condition" value="damaged" id="condition3">
+                            <label for="condition3" data-pt="Danificado (quebra e pontas duplas)" data-en="Damaged (breakage and split ends)">Danificado (quebra e pontas duplas)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="condition" value="frizzy" id="condition4">
+                            <label for="condition4" data-pt="Com frizz (arrepiado e sem controle)" data-en="Frizzy (unruly and uncontrolled)">Com frizz (arrepiado e sem controle)</label>
+                        </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Seção 7: Elasticidade -->
-            <div class="question-section" id="section-7">
-                <div class="section-title">
-                    <div class="section-icon"><i class="fas fa-expand-arrows-alt"></i></div>
-                    <h2 data-translate="section7-title">Teste de Elasticidade</h2>
+            <div class="section" id="section7">
+                <div class="section-header">
+                    <div class="section-icon">🔄</div>
+                    <h3 class="section-title" data-pt="Elasticidade Capilar" data-en="Hair Elasticity">Elasticidade Capilar</h3>
                 </div>
-                
                 <div class="question">
-                    <div class="question-title">
+                    <div class="question-text">
                         <span class="question-number">7</span>
-                        <span data-translate="q7-title">Quando você puxa suavemente um fio molhado, o que acontece?</span>
+                        <span data-pt="Quando você puxa um fio molhado, o que acontece?" data-en="When you pull a wet strand, what happens?">Quando você puxa um fio molhado, o que acontece?</span>
                     </div>
                     <div class="options">
-                        <label class="option">
-                            <input type="radio" name="elasticity" value="normal">
-                            <div class="option-text" data-translate="q7-opt1">Estica um pouco e volta ao normal</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="elasticity" value="low">
-                            <div class="option-text" data-translate="q7-opt2">Quebra facilmente sem esticar</div>
-                        </label>
-                        <label class="option">
-                            <input type="radio" name="elasticity" value="high">
-                            <div class="option-text" data-translate="q7-opt3">Estica muito e fica elástico/emborrachado</div>
-                        </label>
+                        <div class="option">
+                            <input type="radio" name="elasticity" value="high" id="elasticity1">
+                            <label for="elasticity1" data-pt="Estica muito e volta ao normal" data-en="Stretches a lot and returns to normal">Estica muito e volta ao normal</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="elasticity" value="normal" id="elasticity2">
+                            <label for="elasticity2" data-pt="Estica um pouco e volta" data-en="Stretches a little and returns">Estica um pouco e volta</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="elasticity" value="low" id="elasticity3">
+                            <label for="elasticity3" data-pt="Quebra facilmente sem esticar" data-en="Breaks easily without stretching">Quebra facilmente sem esticar</label>
+                        </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Seção 8: Objetivos -->
-            <div class="question-section" id="section-8">
-                <div class="section-title">
-                    <div class="section-icon"><i class="fas fa-bullseye"></i></div>
-                    <h2 data-translate="section8-title">Seus Objetivos Capilares</h2>
+            <div class="section" id="section8">
+                <div class="section-header">
+                    <div class="section-icon">🎯</div>
+                    <h3 class="section-title" data-pt="Seus Objetivos Capilares" data-en="Your Hair Goals">Seus Objetivos Capilares</h3>
                 </div>
-                
                 <div class="question">
-                    <div class="question-title">
+                    <div class="question-text">
                         <span class="question-number">8</span>
-                        <span data-translate="q8-title">Qual é seu principal objetivo com os cuidados capilares? (Múltipla escolha)</span>
+                        <span data-pt="Quais são seus principais objetivos? (Múltipla escolha)" data-en="What are your main goals? (Multiple choice)">Quais são seus principais objetivos? (Múltipla escolha)</span>
                     </div>
                     <div class="options">
-                        <label class="option">
-                            <input type="checkbox" name="goals" value="hydration">
-                            <div class="option-text" data-translate="q8-opt1">Hidratação e maciez</div>
-                        </label>
-                        <label class="option">
-                            <input type="checkbox" name="goals" value="repair">
-                            <div class="option-text" data-translate="q8-opt2">Reparar danos e fortalecer</div>
-                        </label>
-                        <label class="option">
-                            <input type="checkbox" name="goals" value="volume">
-                            <div class="option-text" data-translate="q8-opt3">Dar volume e corpo</div>
-                        </label>
-                        <label class="option">
-                            <input type="checkbox" name="goals" value="frizz-control">
-                            <div class="option-text" data-translate="q8-opt4">Controlar frizz</div>
-                        </label>
-                        <label class="option">
-                            <input type="checkbox" name="goals" value="curl-definition">
-                            <div class="option-text" data-translate="q8-opt5">Definir cachos/ondas</div>
-                        </label>
-                        <label class="option">
-                            <input type="checkbox" name="goals" value="color-protection">
-                            <div class="option-text" data-translate="q8-opt6">Proteger cor</div>
-                        </label>
+                        <div class="option">
+                            <input type="checkbox" name="goals" value="hydration" id="goals1">
+                            <label for="goals1" data-pt="Hidratação intensa" data-en="Intense hydration">Hidratação intensa</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" name="goals" value="volume" id="goals2">
+                            <label for="goals2" data-pt="Mais volume" data-en="More volume">Mais volume</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" name="goals" value="curl-definition" id="goals3">
+                            <label for="goals3" data-pt="Definição de cachos/ondas" data-en="Curl/wave definition">Definição de cachos/ondas</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" name="goals" value="frizz-control" id="goals4">
+                            <label for="goals4" data-pt="Controle do frizz" data-en="Frizz control">Controle do frizz</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" name="goals" value="growth" id="goals5">
+                            <label for="goals5" data-pt="Crescimento saudável" data-en="Healthy growth">Crescimento saudável</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" name="goals" value="repair" id="goals6">
+                            <label for="goals6" data-pt="Reparação de danos" data-en="Damage repair">Reparação de danos</label>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <button class="btn" id="nextBtn" onclick="nextQuestion()">
-                <span data-translate="next-btn">Próxima</span>
-                <i class="fas fa-arrow-right"></i>
-            </button>
-            
-            <!-- Resultados -->
-            <div class="results" id="results">
-                <div class="results-content">
-                    <div class="hair-visual" id="hairVisual">
-                        <i class="fas fa-spa"></i>
-                    </div>
-                    
-                    <h2 class="results-title" data-translate="results-title">Seu Perfil Capilar</h2>
-                    <div class="hair-type-result" id="hairTypeResult"></div>
-                    
-                    <div class="recommendation-card">
-                        <div class="recommendation-title">
-                            <i class="fas fa-star recommendation-icon"></i>
-                            <span data-translate="rec-routine">Rotina Recomendada</span>
-                        </div>
-                        <ul class="product-list" id="routineList"></ul>
-                    </div>
-                    
-                    <div class="recommendation-card">
-                        <div class="recommendation-title">
-                            <i class="fas fa-shopping-bag recommendation-icon"></i>
-                            <span data-translate="rec-products">Produtos Recomendados</span>
-                        </div>
-                        <ul class="product-list" id="productList"></ul>
-                    </div>
-                    
-                    <div class="recommendation-card">
-                        <div class="recommendation-title">
-                            <i class="fas fa-crown recommendation-icon"></i>
-                            <span data-translate="rec-brands">Marcas Recomendadas</span>
-                        </div>
-                        <div class="brand-showcase" id="brandShowcase"></div>
-                    </div>
-                    
-                    <button class="btn" onclick="restartQuiz()">
-                        <i class="fas fa-redo"></i>
-                        <span data-translate="restart-btn">Refazer Teste</span>
-                    </button>
+
+            <div class="navigation">
+                <button class="btn btn-secondary" onclick="previousSection()" id="prevBtn" style="display: none;">
+                    <span data-pt="Anterior" data-en="Previous">Anterior</span>
+                </button>
+                <button class="btn btn-primary" onclick="nextSection()" id="nextBtn">
+                    <span data-pt="Próxima" data-en="Next">Próxima</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Seção de Resultados -->
+        <div id="results">
+            <div class="results-header">
+                <h2 data-pt="Sua Análise Capilar Completa" data-en="Your Complete Hair Analysis">Sua Análise Capilar Completa</h2>
+                <div class="hair-type-result">
+                    <h3 id="hairTypeResult">Seu Tipo: Cacheado 3B</h3>
+                </div>
+                <p class="hair-description" id="hairDescription">
+                    Descrição detalhada do seu tipo de cabelo aparecerá aqui.
+                </p>
+            </div>
+
+            <div class="results-section">
+                <h4 data-pt="Rotina Personalizada" data-en="Personalized Routine">Rotina Personalizada</h4>
+                <ul class="routine-list" id="routineList">
+                    <!-- Rotina será preenchida dinamicamente -->
+                </ul>
+            </div>
+
+            <div class="results-section">
+                <h4 data-pt="Produtos Recomendados" data-en="Recommended Products">Produtos Recomendados</h4>
+                <ul class="product-list" id="productList">
+                    <!-- Produtos serão preenchidos dinamicamente -->
+                </ul>
+            </div>
+
+            <div class="results-section">
+                <h4 data-pt="Marcas Recomendadas" data-en="Recommended Brands">Marcas Recomendadas</h4>
+                <div class="brand-showcase" id="brandShowcase">
+                    <!-- Marcas serão preenchidas dinamicamente -->
+                </div>
+            </div>
+
+            <div class="ingredients-section">
+                <h4 data-pt="Ingredientes Ativos Recomendados" data-en="Recommended Active Ingredients">Ingredientes Ativos Recomendados</h4>
+                <div class="ingredients-list" id="ingredientsList">
+                    <!-- Ingredientes serão preenchidos dinamicamente -->
                 </div>
             </div>
         </div>
+
+        <div class="footer">
+            <p data-pt="© 2025 Anamnese Capilar Luxuosa. Desenvolvido com base em pesquisas de marcas brasileiras e internacionais." data-en="© 2025 Luxury Hair Analysis. Developed based on research from Brazilian and international brands.">
+                © 2025 Anamnese Capilar Luxuosa. Desenvolvido com base em pesquisas de marcas brasileiras e internacionais.
+            </p>
+        </div>
     </div>
-    
-    <footer>
-        <p data-translate="footer">&copy; 2025 Anamnese Capilar Luxuosa. Desenvolvido com base em pesquisas de marcas brasileiras e internacionais.</p>
-    </footer>
 
+    <script src="complete_hair_database.js"></script>
     <script>
-        // Traduções
-        const translations = {
-            pt: {
-                'title': 'Anamnese Capilar Luxuosa',
-                'subtitle': 'Descubra seu tipo de cabelo e receba recomendações personalizadas de produtos e tratamentos das melhores marcas',
-                'luxury-badge': 'Experiência Premium',
-                'progress': 'Pergunta 1 de 8',
-                'section1-title': 'Identificação da Curvatura',
-                'q1-title': 'Qual é a curvatura natural do seu cabelo?',
-                'q1-opt1': 'Liso (Tipo 1)',
-                'q1-opt2': 'Ondulado (Tipo 2)',
-                'q1-opt3': 'Cacheado (Tipo 3)',
-                'q1-opt4': 'Crespo (Tipo 4)',
-                'section2-title': 'Espessura dos Fios',
-                'q2-title': 'Como você descreveria a espessura dos seus fios?',
-                'q2-opt1': 'Fino (difícil de sentir entre os dedos)',
-                'q2-opt2': 'Médio (facilmente sentido)',
-                'q2-opt3': 'Grosso (bem perceptível e robusto)',
-                'section3-title': 'Porosidade Capilar',
-                'q3-title': 'Como seu cabelo absorve produtos e umidade?',
-                'q3-opt1': 'Baixa (demora para absorver, produtos ficam na superfície)',
-                'q3-opt2': 'Média (absorve bem e mantém hidratação)',
-                'q3-opt3': 'Alta (absorve rapidamente, mas perde umidade facilmente)',
-                'section4-title': 'Oleosidade do Couro Cabeludo',
-                'q4-title': 'Com que frequência seu cabelo fica oleoso?',
-                'q4-opt1': 'Seco (raramente fica oleoso, couro cabeludo ressecado)',
-                'q4-opt2': 'Normal (fica oleoso após 2-3 dias)',
-                'q4-opt3': 'Oleoso (fica oleoso em menos de 24h)',
-                'q4-opt4': 'Misto (raiz oleosa, pontas secas)',
-                'section5-title': 'Histórico de Processos Químicos',
-                'q5-title': 'Quais processos químicos seu cabelo já passou? (Múltipla escolha)',
-                'q5-opt1': 'Nenhum (cabelo virgem)',
-                'q5-opt2': 'Coloração/Tintura',
-                'q5-opt3': 'Descoloração',
-                'q5-opt4': 'Alisamento/Relaxamento',
-                'q5-opt5': 'Permanente',
-                'section6-title': 'Condição Atual dos Fios',
-                'q6-title': 'Como você descreveria a condição atual do seu cabelo?',
-                'q6-opt1': 'Saudável (brilhoso, macio, sem quebra)',
-                'q6-opt2': 'Ressecado (opaco, áspero ao toque)',
-                'q6-opt3': 'Danificado (quebra, pontas duplas, elástico)',
-                'q6-opt4': 'Com frizz (arrepiado, difícil de controlar)',
-                'section7-title': 'Teste de Elasticidade',
-                'q7-title': 'Quando você puxa suavemente um fio molhado, o que acontece?',
-                'q7-opt1': 'Estica um pouco e volta ao normal',
-                'q7-opt2': 'Quebra facilmente sem esticar',
-                'q7-opt3': 'Estica muito e fica elástico/emborrachado',
-                'section8-title': 'Seus Objetivos Capilares',
-                'q8-title': 'Qual é seu principal objetivo com os cuidados capilares? (Múltipla escolha)',
-                'q8-opt1': 'Hidratação e maciez',
-                'q8-opt2': 'Reparar danos e fortalecer',
-                'q8-opt3': 'Dar volume e corpo',
-                'q8-opt4': 'Controlar frizz',
-                'q8-opt5': 'Definir cachos/ondas',
-                'q8-opt6': 'Proteger cor',
-                'next-btn': 'Próxima',
-                'finish-btn': 'Ver Resultados',
-                'results-title': 'Seu Perfil Capilar',
-                'rec-routine': 'Rotina Recomendada',
-                'rec-products': 'Produtos Recomendados',
-                'rec-brands': 'Marcas Recomendadas',
-                'restart-btn': 'Refazer Teste',
-                'footer': '© 2025 Anamnese Capilar Luxuosa. Desenvolvido com base em pesquisas de marcas brasileiras e internacionais.'
-            },
-            en: {
-                'title': 'Luxury Hair Analysis',
-                'subtitle': 'Discover your hair type and receive personalized product and treatment recommendations from the best brands',
-                'luxury-badge': 'Premium Experience',
-                'progress': 'Question 1 of 8',
-                'section1-title': 'Curl Pattern Identification',
-                'q1-title': 'What is your natural hair curl pattern?',
-                'q1-opt1': 'Straight (Type 1)',
-                'q1-opt2': 'Wavy (Type 2)',
-                'q1-opt3': 'Curly (Type 3)',
-                'q1-opt4': 'Coily (Type 4)',
-                'section2-title': 'Hair Strand Thickness',
-                'q2-title': 'How would you describe the thickness of your hair strands?',
-                'q2-opt1': 'Fine (hard to feel between fingers)',
-                'q2-opt2': 'Medium (easily felt)',
-                'q2-opt3': 'Thick (very noticeable and robust)',
-                'section3-title': 'Hair Porosity',
-                'q3-title': 'How does your hair absorb products and moisture?',
-                'q3-opt1': 'Low (takes time to absorb, products sit on surface)',
-                'q3-opt2': 'Medium (absorbs well and retains moisture)',
-                'q3-opt3': 'High (absorbs quickly but loses moisture easily)',
-                'section4-title': 'Scalp Oiliness',
-                'q4-title': 'How often does your hair get oily?',
-                'q4-opt1': 'Dry (rarely gets oily, dry scalp)',
-                'q4-opt2': 'Normal (gets oily after 2-3 days)',
-                'q4-opt3': 'Oily (gets oily in less than 24h)',
-                'q4-opt4': 'Combination (oily roots, dry ends)',
-                'section5-title': 'Chemical Process History',
-                'q5-title': 'Which chemical processes has your hair undergone? (Multiple choice)',
-                'q5-opt1': 'None (virgin hair)',
-                'q5-opt2': 'Hair coloring/dyeing',
-                'q5-opt3': 'Bleaching',
-                'q5-opt4': 'Straightening/relaxing',
-                'q5-opt5': 'Perming',
-                'section6-title': 'Current Hair Condition',
-                'q6-title': 'How would you describe your hair\'s current condition?',
-                'q6-opt1': 'Healthy (shiny, soft, no breakage)',
-                'q6-opt2': 'Dry (dull, rough to touch)',
-                'q6-opt3': 'Damaged (breakage, split ends, elastic)',
-                'q6-opt4': 'Frizzy (unruly, hard to control)',
-                'section7-title': 'Elasticity Test',
-                'q7-title': 'When you gently pull a wet strand, what happens?',
-                'q7-opt1': 'Stretches a little and returns to normal',
-                'q7-opt2': 'Breaks easily without stretching',
-                'q7-opt3': 'Stretches a lot and becomes elastic/rubbery',
-                'section8-title': 'Your Hair Goals',
-                'q8-title': 'What is your main goal with hair care? (Multiple choice)',
-                'q8-opt1': 'Hydration and softness',
-                'q8-opt2': 'Repair damage and strengthen',
-                'q8-opt3': 'Add volume and body',
-                'q8-opt4': 'Control frizz',
-                'q8-opt5': 'Define curls/waves',
-                'q8-opt6': 'Protect color',
-                'next-btn': 'Next',
-                'finish-btn': 'See Results',
-                'results-title': 'Your Hair Profile',
-                'rec-routine': 'Recommended Routine',
-                'rec-products': 'Recommended Products',
-                'rec-brands': 'Recommended Brands',
-                'restart-btn': 'Retake Test',
-                'footer': '© 2025 Luxury Hair Analysis. Developed based on research from Brazilian and international brands.'
-            }
-        };
-
-        let currentLanguage = 'pt';
         let currentSection = 1;
-        const totalSections = 8;
         let answers = {};
+        let currentLanguage = 'pt';
 
-        // Sistema de idiomas
+        // Função para definir idioma
         function setLanguage(lang) {
             currentLanguage = lang;
             
             // Atualizar botões de idioma
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.dataset.lang === lang) {
-                    btn.classList.add('active');
+            document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            
+            // Atualizar todos os elementos com data-pt e data-en
+            document.querySelectorAll('[data-pt]').forEach(element => {
+                if (lang === 'pt') {
+                    element.textContent = element.getAttribute('data-pt');
+                } else {
+                    element.textContent = element.getAttribute('data-en');
                 }
             });
             
-            // Traduzir todos os elementos
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
-            
-            updateProgress();
+            // Atualizar navegação após mudança de idioma
+            updateNavigation();
         }
 
-        // Navegação entre seções
-        function nextQuestion() {
-            const currentSectionElement = document.getElementById(`section-${currentSection}`);
-            
-            // Validar se a pergunta foi respondida
+        // Função para avançar seção
+        function nextSection() {
             if (!validateCurrentSection()) {
                 alert(currentLanguage === 'pt' ? 'Por favor, responda a pergunta antes de continuar.' : 'Please answer the question before continuing.');
                 return;
             }
             
-            // Salvar respostas
             saveCurrentAnswers();
             
-            // Esconder seção atual
-            currentSectionElement.classList.remove('active');
-            
-            if (currentSection < totalSections) {
+            if (currentSection < 8) {
+                document.getElementById(`section${currentSection}`).classList.remove('active');
                 currentSection++;
-                // Mostrar próxima seção
-                document.getElementById(`section-${currentSection}`).classList.add('active');
+                document.getElementById(`section${currentSection}`).classList.add('active');
                 updateProgress();
-                
-                // Atualizar botão na última pergunta
-                if (currentSection === totalSections) {
-                    const nextBtn = document.getElementById('nextBtn');
-                    nextBtn.innerHTML = `<span data-translate="finish-btn">${currentLanguage === 'pt' ? 'Ver Resultados' : 'See Results'}</span> <i class="fas fa-check"></i>`;
-                }
+                updateNavigation();
             } else {
-                // Mostrar resultados
                 showResults();
             }
         }
 
+        // Função para voltar seção
+        function previousSection() {
+            if (currentSection > 1) {
+                document.getElementById(`section${currentSection}`).classList.remove('active');
+                currentSection--;
+                document.getElementById(`section${currentSection}`).classList.add('active');
+                updateProgress();
+                updateNavigation();
+            }
+        }
+
+        // Função para validar seção atual
         function validateCurrentSection() {
-            const section = document.getElementById(`section-${currentSection}`);
+            const section = document.getElementById(`section${currentSection}`);
             const radioInputs = section.querySelectorAll('input[type="radio"]');
             const checkboxInputs = section.querySelectorAll('input[type="checkbox"]');
             
             if (radioInputs.length > 0) {
-                // Para radio buttons, pelo menos um deve estar selecionado
-                const radioName = radioInputs[0].name;
-                return document.querySelector(`input[name="${radioName}"]:checked`) !== null;
+                return Array.from(radioInputs).some(input => input.checked);
             }
             
             if (checkboxInputs.length > 0) {
-                // Para checkboxes, pelo menos um deve estar selecionado
                 return Array.from(checkboxInputs).some(input => input.checked);
             }
             
             return true;
         }
 
+        // Função para salvar respostas atuais
         function saveCurrentAnswers() {
-            const section = document.getElementById(`section-${currentSection}`);
+            const section = document.getElementById(`section${currentSection}`);
             const radioInputs = section.querySelectorAll('input[type="radio"]:checked');
             const checkboxInputs = section.querySelectorAll('input[type="checkbox"]:checked');
             
@@ -1122,293 +932,150 @@
                 if (!answers[input.name]) {
                     answers[input.name] = [];
                 }
-                answers[input.name].push(input.value);
+                if (input.checked && !answers[input.name].includes(input.value)) {
+                    answers[input.name].push(input.value);
+                } else if (!input.checked && answers[input.name].includes(input.value)) {
+                    answers[input.name] = answers[input.name].filter(val => val !== input.value);
+                }
             });
         }
 
+        // Função para atualizar progresso
         function updateProgress() {
-            const progress = (currentSection / totalSections) * 100;
-            document.getElementById('progressBar').style.width = `${progress}%`;
-            
-            const progressText = currentLanguage === 'pt' ? 
-                `Pergunta ${currentSection} de ${totalSections}` : 
-                `Question ${currentSection} of ${totalSections}`;
-            document.getElementById('progressText').textContent = progressText;
+            const progress = (currentSection / 8) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('currentQuestion').textContent = currentSection;
         }
 
+        // Função para atualizar navegação
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.style.display = currentSection > 1 ? 'inline-flex' : 'none';
+            
+            if (currentSection === 8) {
+                nextBtn.querySelector('span').textContent = currentLanguage === 'pt' ? 'Ver Resultados' : 'View Results';
+            } else {
+                nextBtn.querySelector('span').textContent = currentLanguage === 'pt' ? 'Próxima' : 'Next';
+            }
+        }
+
+        // Função para mostrar resultados
         function showResults() {
-            // Esconder questionário
+            console.log('showResults called with answers:', answers);
+            
+            // Salvar respostas finais
+            saveCurrentAnswers();
+            
+            console.log('Final answers:', answers);
+            
+            // Verificar se temos as funções necessárias
+            if (typeof determineDetailedHairType !== 'function') {
+                console.error('determineDetailedHairType function not found');
+                alert('Erro: Função de análise não encontrada. Verifique se o arquivo complete_hair_database.js foi carregado.');
+                return;
+            }
+            
+            if (typeof generateCompleteRecommendations !== 'function') {
+                console.error('generateCompleteRecommendations function not found');
+                alert('Erro: Função de recomendações não encontrada. Verifique se o arquivo complete_hair_database.js foi carregado.');
+                return;
+            }
+            
+            // Determinar tipo de cabelo detalhado
+            const hairType = determineDetailedHairType(answers);
+            console.log('Hair type determined:', hairType);
+            
+            // Gerar recomendações completas
+            const recommendations = generateCompleteRecommendations(hairType, currentLanguage);
+            console.log('Recommendations generated:', recommendations);
+            
+            // Ocultar questionário e mostrar resultados
             document.querySelector('.app-container').style.display = 'none';
+            document.getElementById('results').style.display = 'block';
             
-            // Mostrar resultados
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.style.display = 'block';
+            // Preencher resultados
+            const typeText = currentLanguage === 'pt' ? `Seu Tipo: ${hairType.type}` : `Your Type: ${hairType.type}`;
+            document.getElementById('hairTypeResult').textContent = typeText;
             
-            // Gerar recomendações baseadas nas respostas
-            generateRecommendations();
-        }
-
-        function generateRecommendations() {
-            const hairType = determineHairType();
-            const recommendations = getRecommendations(hairType);
+            const description = hairType.description ? hairType.description[currentLanguage] : 
+                (currentLanguage === 'pt' ? 'Descrição detalhada do seu tipo de cabelo.' : 'Detailed description of your hair type.');
+            document.getElementById('hairDescription').textContent = description;
             
-            // Mostrar tipo de cabelo
-            document.getElementById('hairTypeResult').textContent = hairType.description;
-            
-            // Mostrar rotina
+            // Preencher rotina
             const routineList = document.getElementById('routineList');
             routineList.innerHTML = '';
-            recommendations.routine.forEach(item => {
+            if (recommendations.routine && recommendations.routine.length > 0) {
+                recommendations.routine.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    routineList.appendChild(li);
+                });
+            } else {
                 const li = document.createElement('li');
-                li.textContent = item;
+                li.textContent = currentLanguage === 'pt' ? 'Rotina personalizada será gerada.' : 'Personalized routine will be generated.';
                 routineList.appendChild(li);
-            });
+            }
             
-            // Mostrar produtos
+            // Preencher produtos
             const productList = document.getElementById('productList');
             productList.innerHTML = '';
-            recommendations.products.forEach(item => {
+            if (recommendations.products && recommendations.products.length > 0) {
+                recommendations.products.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    productList.appendChild(li);
+                });
+            } else {
                 const li = document.createElement('li');
-                li.textContent = item;
+                li.textContent = currentLanguage === 'pt' ? 'Produtos recomendados serão listados.' : 'Recommended products will be listed.';
                 productList.appendChild(li);
-            });
+            }
             
-            // Mostrar marcas
+            // Preencher marcas
             const brandShowcase = document.getElementById('brandShowcase');
             brandShowcase.innerHTML = '';
-            recommendations.brands.forEach(brand => {
+            if (recommendations.brands && recommendations.brands.length > 0) {
+                recommendations.brands.forEach(brand => {
+                    const div = document.createElement('div');
+                    div.className = 'brand-card';
+                    div.textContent = brand;
+                    brandShowcase.appendChild(div);
+                });
+            } else {
                 const div = document.createElement('div');
                 div.className = 'brand-card';
-                div.textContent = brand;
+                div.textContent = currentLanguage === 'pt' ? 'Marcas recomendadas' : 'Recommended brands';
                 brandShowcase.appendChild(div);
-            });
-        }
-
-        function determineHairType() {
-            const curvature = answers.curvature;
-            const thickness = answers.thickness;
-            const porosity = answers.porosity;
-            const oiliness = answers.oiliness;
-            const condition = answers.condition;
-            
-            let typeNumber = curvature;
-            let subtype = 'A';
-            
-            // Determinar subtipo baseado em outras características
-            if (thickness === 'thick' || porosity === 'high') {
-                subtype = 'C';
-            } else if (thickness === 'medium' || porosity === 'medium') {
-                subtype = 'B';
             }
             
-            const types = {
-                '1': { name: 'Liso', nameEn: 'Straight' },
-                '2': { name: 'Ondulado', nameEn: 'Wavy' },
-                '3': { name: 'Cacheado', nameEn: 'Curly' },
-                '4': { name: 'Crespo', nameEn: 'Coily' }
-            };
-            
-            const typeName = currentLanguage === 'pt' ? types[typeNumber].name : types[typeNumber].nameEn;
-            
-            return {
-                type: `${typeNumber}${subtype}`,
-                description: `${typeName} ${typeNumber}${subtype}`,
-                curvature: typeNumber,
-                subtype: subtype,
-                thickness: thickness,
-                porosity: porosity,
-                oiliness: oiliness,
-                condition: condition
-            };
-        }
-
-        function getRecommendations(hairType) {
-            const isPortuguese = currentLanguage === 'pt';
-            
-            // Base de recomendações baseada na pesquisa realizada
-            const baseRoutine = isPortuguese ? [
-                'Lavagem com shampoo adequado ao seu tipo de cabelo',
-                'Condicionador para hidratação e desembaraço',
-                'Máscara de tratamento 1-2x por semana',
-                'Leave-in para proteção e finalização',
-                'Protetor térmico antes do uso de ferramentas de calor'
-            ] : [
-                'Wash with shampoo suitable for your hair type',
-                'Conditioner for hydration and detangling',
-                'Treatment mask 1-2x per week',
-                'Leave-in for protection and styling',
-                'Heat protectant before using heat tools'
-            ];
-            
-            let specificProducts = [];
-            let brands = [];
-            
-            // Recomendações específicas baseadas no tipo de cabelo
-            if (hairType.curvature === '1') { // Liso
-                specificProducts = isPortuguese ? [
-                    'Shampoo para cabelos lisos (controle de oleosidade)',
-                    'Condicionador leve que não pese os fios',
-                    'Sérum anti-frizz para brilho',
-                    'Spray volumizador se os fios forem finos'
-                ] : [
-                    'Shampoo for straight hair (oil control)',
-                    'Lightweight conditioner that won\'t weigh hair down',
-                    'Anti-frizz serum for shine',
-                    'Volumizing spray if hair is fine'
-                ];
-                brands = ['Natura', 'O Boticário', 'L\'Oréal', 'Kérastase'];
-            } else if (hairType.curvature === '2') { // Ondulado
-                specificProducts = isPortuguese ? [
-                    'Shampoo sem sulfato para preservar ondas',
-                    'Condicionador hidratante',
-                    'Creme para pentear específico para ondas',
-                    'Gel ou mousse para definição'
-                ] : [
-                    'Sulfate-free shampoo to preserve waves',
-                    'Moisturizing conditioner',
-                    'Wave-specific styling cream',
-                    'Gel or mousse for definition'
-                ];
-                brands = ['Lola Cosmetics', 'Truss', 'Wella', 'Joico'];
-            } else if (hairType.curvature === '3') { // Cacheado
-                specificProducts = isPortuguese ? [
-                    'Shampoo hidratante ou co-wash',
-                    'Condicionador rico em nutrição',
-                    'Máscara de hidratação intensiva',
-                    'Creme para cachos com óleos naturais',
-                    'Gelatina ou mousse para definição'
-                ] : [
-                    'Moisturizing shampoo or co-wash',
-                    'Nutrition-rich conditioner',
-                    'Intensive hydration mask',
-                    'Curl cream with natural oils',
-                    'Gel or mousse for definition'
-                ];
-                brands = ['Apice', 'Inoar', 'Forever Liss', 'Kérastase'];
-            } else if (hairType.curvature === '4') { // Crespo
-                specificProducts = isPortuguese ? [
-                    'Co-wash ou shampoo ultra hidratante',
-                    'Condicionador leave-in',
-                    'Máscara de nutrição profunda',
-                    'Óleos vegetais (coco, argan, abacate)',
-                    'Creme para pentear rico em manteigas'
-                ] : [
-                    'Co-wash or ultra-moisturizing shampoo',
-                    'Leave-in conditioner',
-                    'Deep nutrition mask',
-                    'Plant oils (coconut, argan, avocado)',
-                    'Styling cream rich in butters'
-                ];
-                brands = ['Lola Cosmetics', 'Embelleze', 'Sweet Hair', 'Joico'];
-            }
-            
-            // Ajustar recomendações baseadas na condição do cabelo
-            if (hairType.condition === 'damaged') {
-                const repairProducts = isPortuguese ? [
-                    'Shampoo e condicionador reconstrutores',
-                    'Ampolas de reconstrução com proteínas',
-                    'Tratamento com queratina'
-                ] : [
-                    'Reconstructive shampoo and conditioner',
-                    'Protein reconstruction ampoules',
-                    'Keratin treatment'
-                ];
-                specificProducts = [...specificProducts, ...repairProducts];
-            }
-            
-            if (hairType.porosity === 'high') {
-                const porosityProducts = isPortuguese ? [
-                    'Produtos com proteínas para fortalecer',
-                    'Óleos seladores para reter umidade'
-                ] : [
-                    'Protein products to strengthen',
-                    'Sealing oils to retain moisture'
-                ];
-                specificProducts = [...specificProducts, ...porosityProducts];
-            }
-            
-            return {
-                routine: baseRoutine,
-                products: specificProducts,
-                brands: brands
-            };
-        }
-
-        function restartQuiz() {
-            // Reset variables
-            currentSection = 1;
-            answers = {};
-            
-            // Reset UI
-            document.querySelector('.app-container').style.display = 'block';
-            document.getElementById('results').style.display = 'none';
-            
-            // Reset sections
-            document.querySelectorAll('.question-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById('section-1').classList.add('active');
-            
-            // Reset inputs
-            document.querySelectorAll('input').forEach(input => {
-                input.checked = false;
-            });
-            
-            // Reset button
-            const nextBtn = document.getElementById('nextBtn');
-            nextBtn.innerHTML = `<span data-translate="next-btn">${currentLanguage === 'pt' ? 'Próxima' : 'Next'}</span> <i class="fas fa-arrow-right"></i>`;
-            
-            // Reset progress
-            updateProgress();
-        }
-
-        // Event listeners para seleção de opções
-        document.addEventListener('DOMContentLoaded', function() {
-            // Adicionar event listeners para todas as opções
-            document.querySelectorAll('.option').forEach(option => {
-                option.addEventListener('click', function() {
-                    const input = this.querySelector('input');
-                    
-                    if (input.type === 'radio') {
-                        // Para radio buttons, remover seleção de outros na mesma pergunta
-                        const name = input.name;
-                        document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
-                            radio.closest('.option').classList.remove('selected');
-                        });
-                        
-                        input.checked = true;
-                        this.classList.add('selected');
-                    } else if (input.type === 'checkbox') {
-                        // Para checkboxes, toggle seleção
-                        input.checked = !input.checked;
-                        this.classList.toggle('selected', input.checked);
-                        
-                        // Se "Nenhum" for selecionado, desmarcar outros
-                        if (input.value === 'none' && input.checked) {
-                            const name = input.name;
-                            document.querySelectorAll(`input[name="${name}"]`).forEach(checkbox => {
-                                if (checkbox.value !== 'none') {
-                                    checkbox.checked = false;
-                                    checkbox.closest('.option').classList.remove('selected');
-                                }
-                            });
-                        } else if (input.value !== 'none' && input.checked) {
-                            // Se outro for selecionado, desmarcar "Nenhum"
-                            const name = input.name;
-                            const noneCheckbox = document.querySelector(`input[name="${name}"][value="none"]`);
-                            if (noneCheckbox) {
-                                noneCheckbox.checked = false;
-                                noneCheckbox.closest('.option').classList.remove('selected');
-                            }
-                        }
-                    }
+            // Preencher ingredientes
+            const ingredientsList = document.getElementById('ingredientsList');
+            ingredientsList.innerHTML = '';
+            if (recommendations.activeIngredients && recommendations.activeIngredients.length > 0) {
+                recommendations.activeIngredients.forEach(ingredient => {
+                    const span = document.createElement('span');
+                    span.className = 'ingredient-tag';
+                    span.textContent = ingredient;
+                    ingredientsList.appendChild(span);
                 });
-            });
+            } else {
+                const span = document.createElement('span');
+                span.className = 'ingredient-tag';
+                span.textContent = currentLanguage === 'pt' ? 'Ingredientes ativos' : 'Active ingredients';
+                ingredientsList.appendChild(span);
+            }
             
-            // Inicializar progresso
+            // Scroll para o topo dos resultados
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
             updateProgress();
+            updateNavigation();
         });
     </script>
 </body>
 </html>
-
